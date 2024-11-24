@@ -5,7 +5,7 @@ export default function Main() {
   return (
     <main>
       {/* Left Content */}
-      <div style={{ marginLeft: "30em" }}>
+      <div style={{ marginLeft: "52%" }}>
         <h1>Little Lemon</h1>
         <h2>Washington, D.C.</h2>
         <p>
@@ -18,7 +18,7 @@ export default function Main() {
       {/* Right Content */}
       <div className="right">
         <span>
-          <img src={Photo} alt="Restaurant" />
+          <img src={Photo} alt="Restaurant" style={{ marginRight: "26em" }} />
         </span>
       </div>
     </main>
