@@ -1,20 +1,23 @@
 import "./App.css";
 import "../src/styling/specials.css";
 import React from "react";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
-import Specials from "./components/Specials";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import BookingPage from "./components/BookingPage";
+import Homepage from "./components/Homepage";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Header />
-      <Main />
-      <Specials />
-      <Footer />
-    </div>
+    <Router>
+      <nav>
+        <Link to="/">Home</Link>
+        <Link to="/booking">Booking</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/booking" element={<BookingPage />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;
