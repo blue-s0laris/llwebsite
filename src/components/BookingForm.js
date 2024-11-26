@@ -15,13 +15,12 @@ const BookingForm = () => {
   });
 
   const [isFormValid, setIsFormValid] = useState(false);
-  const [submitted, setSubmitted] = useState(false); // Track if form has been submitted
+  const [submitted, setSubmitted] = useState(false);
 
   const validateForm = useCallback(() => {
     let newErrors = { date: "", time: "", people: "" };
     const { date, time, people } = formData;
 
-    // Only validate fields when the form is submitted
     if (submitted) {
       if (!date) newErrors.date = "Date is required.";
       if (!time) newErrors.time = "Time is required.";
@@ -32,6 +31,10 @@ const BookingForm = () => {
     setErrors(newErrors);
     setIsFormValid(!Object.values(newErrors).some((error) => error));
   }, [formData, submitted]);
+
+  useEffect(() => {
+    validateForm();
+  }, [formData, validateForm]);
 
   const handleDateChange = (e) => {
     const selectedDate = e.target.value;
@@ -50,16 +53,12 @@ const BookingForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true); // Mark the form as submitted
-    validateForm(); // Revalidate the form after submission
-    if (!isFormValid) return; // Don't submit if form is invalid
-    console.log("Form submitted with data:", formData);
+    setSubmitted(true);
+    validateForm();
+    if (!isFormValid) return;
     alert("Booking confirmed!");
+    console.log("Form submitted with data:", formData);
   };
-
-  useEffect(() => {
-    validateForm(); // Run validation on formData change
-  }, [formData, validateForm]);
 
   return (
     <form onSubmit={handleSubmit} className="booking-form">
@@ -122,7 +121,7 @@ const BookingForm = () => {
         )}
       </div>
 
-      <button type="submit" className="submit-button" disabled={!isFormValid}>
+      <button className="submit-button" type="submit" aria-label="Book Now">
         Book Now
       </button>
     </form>

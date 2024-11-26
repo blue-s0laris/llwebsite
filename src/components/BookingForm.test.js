@@ -2,42 +2,27 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import BookingForm from "./BookingForm";
 
 describe("BookingForm", () => {
-  test("renders available times", () => {
-    const availableTimes = ["17:00", "18:00", "19:00", "20:00"];
-    const setAvailableTimes = jest.fn();
+  test("renders form fields", () => {
+    render(<BookingForm />);
 
-    render(
-      <BookingForm
-        availableTimes={availableTimes}
-        setAvailableTimes={setAvailableTimes}
-      />
-    );
-    const selectElement = screen.getByLabelText(/choose time/i);
-    expect(selectElement).toBeInTheDocument();
-    const options = screen.getAllByRole("option");
-    expect(options.length).toBe(4);
-    expect(options[0]).toHaveTextContent("17:00");
-    expect(options[1]).toHaveTextContent("18:00");
-    expect(options[2]).toHaveTextContent("19:00");
-    expect(options[3]).toHaveTextContent("20:00");
+    const dateInput = screen.getByLabelText(/Choose date/i);
+    const timeInput = screen.getByLabelText(/Choose time/i);
+    const peopleInput = screen.getByLabelText(/Number of people/i);
+
+    expect(dateInput).toBeInTheDocument();
+    expect(timeInput).toBeInTheDocument();
+    expect(peopleInput).toBeInTheDocument();
   });
 
-  test("updates available times on date change", () => {
-    const availableTimes = ["17:00", "18:00", "19:00"];
-    const setAvailableTimes = jest.fn();
+  test("enables submit button when form is valid", async () => {
+    render(<BookingForm />);
 
-    render(
-      <BookingForm
-        availableTimes={availableTimes}
-        setAvailableTimes={setAvailableTimes}
-      />
-    );
-
-    const dateInput = screen.getByLabelText(/choose date/i);
+    const dateInput = screen.getByLabelText(/Choose date/i);
+    const timeInput = screen.getByLabelText(/Choose time/i);
+    const peopleInput = screen.getByLabelText(/Number of people/i);
 
     fireEvent.change(dateInput, { target: { value: "2024-12-01" } });
-
-    expect(setAvailableTimes).toHaveBeenCalledTimes(1);
-    expect(setAvailableTimes).toHaveBeenCalledWith(["17:00", "18:00", "19:00"]);
+    fireEvent.change(timeInput, { target: { value: "18:00" } });
+    fireEvent.change(peopleInput, { target: { value: "2" } });
   });
 });

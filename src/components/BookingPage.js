@@ -3,7 +3,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import BookingForm from "./BookingForm";
 import Specials from "./Specials";
-import { Link } from "react-router-dom"; // Import Link for the button
+import { Link } from "react-router-dom";
 
 const BookingPage = () => {
   const availableTimes = ["17:00", "18:00", "19:00", "20:00"];
@@ -13,7 +13,7 @@ const BookingPage = () => {
     <div className="booking-page">
       <Header />
       <h1 className="booking-header">
-        <Link to="/">
+        <Link to="/" className="back-link">
           <button className="button">&lt;</button>
         </Link>
         Book Your Table
