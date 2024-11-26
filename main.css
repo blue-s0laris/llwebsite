@@ -1,0 +1,37 @@
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.left-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.right-content {
+  flex: 1;
+  text-align: center;
+}
+
+.restaurant-image {
+  max-width: 100%;
+  height: auto;
+  margin-right: 26em;
+}
+
+.reserve-button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #f4a261;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.reserve-button:hover {
+  background-color: #e76f51;
+}

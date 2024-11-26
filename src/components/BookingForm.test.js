@@ -23,7 +23,6 @@ describe("BookingForm", () => {
   });
 
   test("updates available times on date change", () => {
-    // Initial available times
     const availableTimes = ["17:00", "18:00", "19:00"];
     const setAvailableTimes = jest.fn();
 

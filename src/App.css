@@ -72,7 +72,7 @@ span img {
 
 @media (max-width: 768px) {
   .container {
-    grid-template-columns: 1fr; /* Single column layout for smaller screens */
+    grid-template-columns: 1fr;
   }
 }
 
@@ -123,4 +123,32 @@ button {
 button:hover {
   background-color: #fff;
   color: #000;
+}
+
+.booking-header {
+  margin-bottom: 20px;
+  font-size: 2em;
+  text-align: center;
+  margin-top: 2%;
+}
+
+.booking-form {
+  margin-bottom: 50px;
+}
+
+footer {
+  margin-top: 40px;
+}
+
+.form {
+  margin-bottom: 30px;
+}
+
+.button {
+  font-size: 1.5rem;
+  background-color: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  margin-right: 10px;
 }
